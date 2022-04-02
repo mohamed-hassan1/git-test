@@ -20,38 +20,21 @@
                             <h2 class="card-title mb-4">Task List</h2>
                             <form>
                                 <div class="form-floating mb-3">
-                                    <input type="text" placeholder="Enter Text" class="form-control" id="task-name">
+                                    <input type="text" placeholder="Enter Text" class="form-control" id="task-name" autocomplete="off">
                                     <label for="task-name" class="form-label">Task Name</label>
                                 </div>
-                                <button class="btn btn-primary" type="button">Add Task</button>
+                                <button class="btn btn-primary add-btn" type="button" disabled>Add Task</button>
                             </form>
                         </div>
                         <hr>
                         <div class="card-body p-3">
-                            <h3 class="card-subtitle mb-4">Tasks</h3>
-                            <ul class="list-group user-select-none mb-3">
-                                <li class="list-group-item d-flex align-items-center p-3 justify-content-between">
-                                    <h5 class="list-text mb-0 text-primary text-display">Awesome name 1</h5>
-                                    <button class="btn-close btn-sm" type="button"></button>
-                                </li>
-                                <li class="list-group-item d-flex align-items-center p-3 justify-content-between">
-                                    <h5 class="list-text mb-0 text-primary text-display">Awesome name 2</h5>
-                                    <button class="btn-close btn-sm" type="button"></button>
-                                </li>
-                                <li class="list-group-item d-flex align-items-center p-3 justify-content-between">
-                                    <h5 class="list-text mb-0 text-primary text-display">Awesome name 3</h5>
-                                    <button class="btn-close btn-sm" type="button"></button>
-                                </li>
-                                <li class="list-group-item d-flex align-items-center p-3 justify-content-between">
-                                    <h5 class="list-text mb-0 text-primary text-display">Awesome name 4</h5>
-                                    <button class="btn-close btn-sm" type="button"></button>
-                                </li>
-                                <li class="list-group-item d-flex align-items-center p-3 justify-content-between">
-                                    <h5 class="list-text mb-0 text-primary text-display">Awesome name 5</h5>
-                                    <button class="btn-close btn-sm" type="button"></button>
-                                </li>
-                            </ul>
-                            <button class="btn btn-dark">Clear Tasks</button>
+                            <h3 class="card-subtitle mb-3">Tasks</h3>
+                            <div class="tasks-filter form-floating mb-4">
+                                <input type="text" placeholder="Enter task name" id="filter-task" class="form-control">
+                                <label for="filter-task" class="form-label">Enter task name</label>
+                            </div>
+                            <ul class="list-group user-select-none mb-3"></ul>
+                            <button class="btn btn-dark clear-tasks" disabled>Clear Tasks</button>
                         </div>
                     </div>
                     <!-- End Card -->
