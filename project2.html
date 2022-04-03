@@ -17,8 +17,8 @@
                     <!-- *** Start Card *** -->
                     <div class="card w-50">
                         <div class="card-body">
-                            <h5 class="card-title mb-4">Loan Calculator</h5>
-                            <form>
+                            <h3 class="card-title mb-4 text-center">Loan Calculator</h3>
+                            <form class="mb-4">
                                 <div class="input-group mb-2">
                                     <span class="input-group-text">$</span>
                                     <input type="text" class="form-control" placeholder="Loan Amount">
@@ -27,11 +27,31 @@
                                     <span class="input-group-text">%</span>
                                     <input type="text" class="form-control" placeholder="Annual Interest">
                                 </div>
-                                <div class="input-group mb-4">
+                                <div class="input-group mb-3">
                                     <input type="number" class="form-control" placeholder="Repayment Years">
                                 </div>
                                 <button type="button" class="btn btn-primary w-100">Calculate</button>
                             </form>
+                            <h5 class="text-center w-100 mb-3">Results</h5>
+                            <p class="placeholder-glow d-none">
+                                <span class="w-100 placeholder mb-2" style="height: 38px;"></span>
+                                <span class="w-100 placeholder mb-2" style="height: 38px;"></span>
+                                <span class="w-100 placeholder mb-2" style="height: 38px;"></span>
+                            </p>
+                            <div class="results-container">
+                                <div class="input-group mb-2">
+                                    <span class="input-group-text">Monthly Payment</span>
+                                    <input type="text" class="form-control" disabled>
+                                </div>
+                                <div class="input-group mb-2">
+                                    <span class="input-group-text">Total Payment</span>
+                                    <input type="text" class="form-control" disabled>
+                                </div>
+                                <div class="input-group">
+                                    <span class="input-group-text">Total Interest</span>
+                                    <input type="text" class="form-control" disabled>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <!-- *** End Card *** -->
