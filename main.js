@@ -2,25 +2,41 @@ document.querySelector('.get-data').addEventListener('click', getData);
 
 function getData() {
 
+    // const xhr = new XMLHttpRequest();
+
+    // xhr.open('GET', 'test.txt', true);
+    // xhr.onprogress = function() {
+    //     console.log(this.readyState)
+    // }
+    // xhr.onload = function() {
+    //     console.log(this.responseText);
+    // }
+    // xhr.onerror = function() {
+    //     console.log('Request error');
+    // }
+
+    // xhr.send();
+
     const xhr = new XMLHttpRequest();
 
-    xhr.open('GET', 'test.txt', true);
-
+    xhr.open('GET', 'https://www.mhdeveloper.com/api/test.json', true);
+    
     xhr.onprogress = function() {
-        console.log(this.readyState);
+        console.log('Loading...', this.readyState);
     }
 
     xhr.onload = function() {
         if (this.status === 200) {
-            console.log(this.responseText);
+            console.log(JSON.parse(this.responseText))
         }
     }
 
     xhr.onerror = function() {
-        console.log('Request error...');
+        conosle.log('Request error...')
     }
 
     xhr.send();
 
-
 }
+
+
