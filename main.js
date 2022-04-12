@@ -1,42 +1,50 @@
 document.querySelector('.get-data').addEventListener('click', getData);
 
 function getData() {
+    const http = new easyHttp;
 
-    // const xhr = new XMLHttpRequest();
+    // http.getFun('https://www.mhdeveloper.com/api/test.json', function(status, results) {
+    //     if (!status) {
+    //         console.log(results)
+    //     } else {
+    //         console.log(status)
+    //     }
+    // });
 
-    // xhr.open('GET', 'test.txt', true);
-    // xhr.onprogress = function() {
-    //     console.log(this.readyState)
-    // }
-    // xhr.onload = function() {
-    //     console.log(this.responseText);
-    // }
-    // xhr.onerror = function() {
-    //     console.log('Request error');
-    // }
-
-    // xhr.send();
-
-    const xhr = new XMLHttpRequest();
-
-    xhr.open('GET', 'https://www.mhdeveloper.com/api/test.json', true);
-    
-    xhr.onprogress = function() {
-        console.log('Loading...', this.readyState);
+    const data = {
+        work: 'freelancer'
     }
 
-    xhr.onload = function() {
-        if (this.status === 200) {
-            console.log(JSON.parse(this.responseText))
-        }
-    }
-
-    xhr.onerror = function() {
-        conosle.log('Request error...')
-    }
-
-    xhr.send();
+    // http.postFun('https://jsonplaceholder.typicode.com/posts', data, function(status, results) {
+    //     if (!status) {
+    //         console.log(results)
+    //     } else {
+    //         console.log(status);
+    //     }
+    // })    
 
 }
+
+function createPost() {
+    return new Promise((resolve, reject) => {
+        setTimeout(() => {
+            const err = false;
+            if (err) {
+                reject('Oops... something went wrong!');
+            } else {
+                console.log('create Post!');
+                resolve();
+            }
+        }, 2000);
+    })
+}
+
+function getPosts() {
+    setTimeout(() => {
+        console.log('get post');
+    }, 1000);
+}
+
+createPost().then(getPosts).catch(err => console.log(err))
 
 
