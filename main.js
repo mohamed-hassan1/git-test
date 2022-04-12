@@ -47,4 +47,10 @@ function getPosts() {
 
 createPost().then(getPosts).catch(err => console.log(err))
 
+function fetchTxt() {
+    fetch('test.json')
+     .then(res => res.json())
+     .then(data => console.log(data))
+}
 
+fetchTxt()
