@@ -1,66 +1,77 @@
-// function easyHttp() {
-//     this.http = new XMLHttpRequest();
-// }
-
-// easyHttp.prototype.getFun = function(url, cb) {
-//     this.http.open('GET', url, true);
-//     const self = this;
-//     this.http.onload = function() {
-//         if (self.http.status === 200) {
-//             cb(null, JSON.parse(self.http.responseText));
-//         } else {
-//             cb('Error... ' + self.http.readyState, self.http.responseText);
-//         }
-//     }
-//     this.http.send();
-// }
-
-// easyHttp.prototype.postFun = function(url, data, cb) {
-//     this.http.open('POST', url, true);
-//     this.http.setRequestHeader('Content-Type', 'application/json');
-//     const self = this;
-//     this.http.onload = function() {
-//         cb(null, self.http.responseText);
-//     }
-//     this.http.send(JSON.stringify(data))
-// }
+/**
+ * EasyHTTP Library
+ * Library for making HTTP Request
+ * 
+ * @version 1.0
+ * @author  Mohamed Hassan
+ * @license MIT
+ * 
+ * 
+ * 
+ */
 
 
-function easyHttp() {
-    this.http = new XMLHttpRequest();
-}
 
-// GET
-easyHttp.prototype.getFun = function(url, cb) {
-    this.http.open('GET', url, true);
-    this.http.onload = () => {
-        if (this.http.status === 200) {
-            cb(null, JSON.parse(this.http.responseText));
-        }
-    }
-    this.http.onerror = () => {
-        cb('Request Error... ' + this.http.status, JSON.parse(this.http.responseText));
+class EasyHttp {
+    getFun(url) {
+        return new Promise((resolve, reject) => {
+            fetch(url)
+             .then(this.errorHandler)
+             .then(res => res.json())
+             .then(data => resolve(data))
+             .catch(err => reject(err))
+        })
     }
 
-    this.http.send();
-
-}
-
-easyHttp.prototype.postFun = function(url, data, cb) {
-    this.http.open('POST', url, true);
-    this.http.setRequestHeader('Content-type', 'application/json');
-    this.http.onload = () => {
-        cb(null, JSON.parse(this.http.responseText))
+    postFun(url, data) {
+        return new Promise((resolve, reject) => {
+            fetch(url, {
+                method: 'POST',
+                headers: {
+                    'Content-type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            })
+             .then(this.errorHandler)
+             .then(res => res.json())
+             .then(res => resolve(res))
+             .catch(err => reject(err))
+        })
     }
-    this.http.onerror = () => {
-        cb('Request Error... ' + JSON.parse(this.http.status, this.http.responseText));
+
+    putFun(url, data) {
+        return new Promise((resolve, reject) => {
+            fetch(url, {
+                method: 'PUT',
+                headers: {
+                    'Content-type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            })
+             .then(this.errorHandler)
+             .then(res => res.json())
+             .then(res => resolve(res))
+             .catch(err => reject(err))
+        })
     }
-    this.http.send(JSON.stringify(data));
-}
 
-easyHttp.prototype.getFun2 = function(url) {
-    return new Promise((resolve, reject) => {
-        resolve();
-    });
-}
+    deleteFun(url) {
+        return new Promise((resolve, reject) => {
+            fetch(url, {
+                method: 'DELETE',
+                headers: {
+                    'Content-type': 'application/json'
+                }
+            })
+             .then(this.errorHandler)
+             .then(res => res.json())
+             .then(() => resolve('Resources deleted...'))
+             .catch(err => console.log(err))
+        })
+    }
 
+    errorHandler(res) {
+        if (!res.ok) throw new Error(res.error)
+        return res;
+    }
+}
